@@ -34,7 +34,7 @@ namespace Scheduler
             string Username = UsernameTextBox.Text;
             string Password = PassTextBox.Text;
             string Email = EmailTextBox.Text;
-            //tole bo treba posodobit
+            //tole bo treba posodobit 18.5.2016
             cmd.CommandText = "INSERT INTO users (username, first_name, last_name, password, email) VALUES ('"+ Username + "','" + FirstName + "','" + LastName + "','" + Password + "','" + Email + "');";
             cmd.Connection = con;
             con.Open();
