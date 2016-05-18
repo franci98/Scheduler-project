@@ -149,6 +149,7 @@
             this.Controls.Add(this.FirstNameLabel);
             this.Name = "RegisterForm";
             this.Text = "Registracija";
+            this.Load += new System.EventHandler(this.RegisterForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

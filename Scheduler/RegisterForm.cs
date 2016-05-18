@@ -21,15 +21,25 @@ namespace Scheduler
         //Ustvarjanje povezave / Making a connection
         System.Data.OleDb.OleDbConnection con = new System.Data.OleDb.OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = schedulerDB.accdb");
         //Ustvarjanje dataseta / making of a data set
-        DataTable ds1 = new DataTable();
+        DataSet ds1;
         //Adapter / Posrednik med datasetom in povezavo
         System.Data.OleDb.OleDbDataAdapter da;
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+            ds1 = new DataSet();
+            string sql = "SELECT * FROM users";
+            da = new OleDbDataAdapter(sql, con);
+            con.Open();
+            da.Fill(ds1, "users");
+            con.Close();
+        }
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             try
             {
-
+                DataRow dRow = ds1.Tables["users"].NewRow();
                 string FirstName = FirstNameTextBox.Text;
                 string LastName = LastNameTextBox.Text;
                 string Username = UsernameTextBox.Text;
@@ -56,5 +66,6 @@ namespace Scheduler
             
         }
 
+        
     }
 }
