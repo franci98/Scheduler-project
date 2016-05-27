@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Scheduler
 {
@@ -22,6 +23,24 @@ namespace Scheduler
         DataSet ds1 = new DataSet();
         //Adapter / Posrednik med datasetom in povezavo
         System.Data.OleDb.OleDbDataAdapter da;
+
+        public string GetUserID()
+        {
+            try
+            {
+                FileStream fs = new FileStream("user_data.txt", FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                string user_id = sr.ReadLine();
+                sr.Close();
+
+                return user_id;
+            }
+            catch (Exception)
+            {
+                return "err";
+            }
+        }
         
+
     }
 }

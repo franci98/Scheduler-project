@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.IO;
 
 namespace Scheduler
 {
@@ -48,13 +49,16 @@ namespace Scheduler
             
             if (ds1.Rows.Count == 1)
             {
-                MessageBox.Show("Vpisani ste kot" + username);
+                string user_id = Convert.ToString(ds1.Rows[0]["ID"]);
+                username = Convert.ToString(ds1.Rows[0]["first_name"]);
+                password = Convert.ToString(ds1.Rows[0]["last_name"]);
+                MessageBox.Show("Vpisani ste kot " + username + " "+ password);
 
+                SaveUserData(user_id);
+                
                 this.Hide();
-
-                RegisterForm register = new RegisterForm();
-                register.ShowDialog();
-
+                Schedules sch = new Schedules();
+                sch.ShowDialog();
                 this.Close();
             }
             else
@@ -72,6 +76,33 @@ namespace Scheduler
             register.ShowDialog();
 
             this.Close();
+        }
+
+        public void SaveUserData(string user_id)
+        {
+            try
+            {
+                // najprej ustvarimo datotečni tok, ki ga poimenujemo, povemo ime datoteke in     
+                //način odpiranja datoteke
+                FileStream fs = new FileStream("user_data.txt", FileMode.Open);
+
+                // nato kreiramo zapisovalnik v tok in mu povemo, v kateri tok naj piše
+                StreamWriter sw = new StreamWriter(fs);
+
+                sw.Write(user_id);
+
+                // izpraznimo morebitni medpomnilnik in te podatke zapišemo v datoteko
+                sw.Flush();
+
+                // zapremo datoteko
+                sw.Close();
+            }
+	        catch (Exception ex)
+
+            {
+                        MessageBox.Show(ex.Message, "Napaka!");
+                    }
+
         }
     }
 }
