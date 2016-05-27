@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.FirstNameLabel = new System.Windows.Forms.Label();
             this.LastNameLabel = new System.Windows.Forms.Label();
             this.UsernameLabel = new System.Windows.Forms.Label();
@@ -39,6 +40,10 @@
             this.PassTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.RegisterButton = new System.Windows.Forms.Button();
+            this.schedulerDBDataSet = new Scheduler.schedulerDBDataSet();
+            this.schedulerDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.schedulerDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.schedulerDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // FirstNameLabel
@@ -131,6 +136,16 @@
             this.RegisterButton.UseVisualStyleBackColor = true;
             this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
+            // schedulerDBDataSet
+            // 
+            this.schedulerDBDataSet.DataSetName = "schedulerDBDataSet";
+            this.schedulerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // schedulerDBDataSetBindingSource
+            // 
+            this.schedulerDBDataSetBindingSource.DataSource = this.schedulerDBDataSet;
+            this.schedulerDBDataSetBindingSource.Position = 0;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,6 +165,8 @@
             this.Name = "RegisterForm";
             this.Text = "Registracija";
             this.Load += new System.EventHandler(this.RegisterForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.schedulerDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.schedulerDBDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +185,7 @@
         private System.Windows.Forms.TextBox PassTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Button RegisterButton;
+        private schedulerDBDataSet schedulerDBDataSet;
+        private System.Windows.Forms.BindingSource schedulerDBDataSetBindingSource;
     }
 }

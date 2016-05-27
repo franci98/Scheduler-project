@@ -19,51 +19,50 @@ namespace Scheduler
         }
 
         //Ustvarjanje povezave / Making a connection
-        System.Data.OleDb.OleDbConnection con = new System.Data.OleDb.OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = schedulerDB.accdb");
+        System.Data.OleDb.OleDbConnection con = new System.Data.OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Franci/Documents/GitHub/Scheduler/Scheduler/schedulerDB.accdb");
         //Ustvarjanje dataseta / making of a data set
-        DataSet ds1;
+        DataTable ds1 = new DataTable();
         //Adapter / Posrednik med datasetom in povezavo
         System.Data.OleDb.OleDbDataAdapter da;
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            ds1 = new DataSet();
             string sql = "SELECT * FROM users";
             da = new OleDbDataAdapter(sql, con);
             con.Open();
-            da.Fill(ds1, "users");
+            da.Fill(ds1);
             con.Close();
         }
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DataRow dRow = ds1.Tables["users"].NewRow();
-                string FirstName = FirstNameTextBox.Text;
-                string LastName = LastNameTextBox.Text;
-                string Username = UsernameTextBox.Text;
-                string Password = PassTextBox.Text;
-                string Email = EmailTextBox.Text;
-                con.Open();
-                string querry = "INSERT INTO users ([username], [first_name], [last_name], [password], [email]) VALUES ('markok', 'Marko', 'Klavž', 'klavzm', 'marko.klavz@gmail.com');";
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.Connection = con;
-                cmd.CommandText = querry;
+            string first_name = FirstNameTextBox.Text;
+            string last_name = LastNameTextBox.Text;
+            string username = UsernameTextBox.Text;
+            string password = PassTextBox.Text;
+            string email = EmailTextBox.Text;
 
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Data saved successfuly...!");
-            }
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "INSERT INTO users ([first_name], [last_name], [username], [password], [email]) VALUES (@first_name,@last_name,@username,@password,@email);";
+            cmd.Parameters.AddWithValue("@first_name", first_name);
+            cmd.Parameters.AddWithValue("@last_name", last_name);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Connection = con;
 
-            catch (OleDbException ex)
-            {
-                MessageBox.Show("Failed due to" + ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-            
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            MessageBox.Show("Uporabnik ustvarjen");
+            this.Hide();
+
+            Login login = new Login();
+            login.ShowDialog();
+
+            this.Close();
         }
 
         

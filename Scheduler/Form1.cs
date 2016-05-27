@@ -48,7 +48,14 @@ namespace Scheduler
             
             if (ds1.Rows.Count == 1)
             {
-                MessageBox.Show("Vpisani ste kot");
+                MessageBox.Show("Vpisani ste kot" + username);
+
+                this.Hide();
+
+                RegisterForm register = new RegisterForm();
+                register.ShowDialog();
+
+                this.Close();
             }
             else
                 MessageBox.Show("Vnešeni podatki niso pravilni");

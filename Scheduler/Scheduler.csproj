@@ -65,6 +65,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>schedulerDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Schedules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schedules.Designer.cs">
+      <DependentUpon>Schedules.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +85,9 @@
     </Compile>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schedules.resx">
+      <DependentUpon>Schedules.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
