@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.OleDb;
 
 namespace Scheduler
 {
@@ -20,6 +21,23 @@ namespace Scheduler
             Application.Run(new Login());
         }
 
-        
+        public static string GetUserID()
+        {
+            try
+            {
+                FileStream fs = new FileStream("user_data.txt", FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                string user_id = sr.ReadLine();
+                sr.Close();
+
+                return user_id;
+            }
+            catch (Exception)
+            {
+                return "err";
+            }
+        }
+
+
     }
 }

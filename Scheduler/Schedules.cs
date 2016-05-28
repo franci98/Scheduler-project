@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.OleDb;
 
 namespace Scheduler
 {
@@ -23,24 +24,40 @@ namespace Scheduler
         DataSet ds1 = new DataSet();
         //Adapter / Posrednik med datasetom in povezavo
         System.Data.OleDb.OleDbDataAdapter da;
-
-        public string GetUserID()
-        {
-            try
-            {
-                FileStream fs = new FileStream("user_data.txt", FileMode.Open);
-                StreamReader sr = new StreamReader(fs);
-                string user_id = sr.ReadLine();
-                sr.Close();
-
-                return user_id;
-            }
-            catch (Exception)
-            {
-                return "err";
-            }
-        }
         
 
+        private void Schedules_Load(object sender, EventArgs e)
+        {
+            string user_id = Program.GetUserID();
+
+            Console.WriteLine("User is: " + user_id);
+            string qry = "SELECT * FROM schedules WHERE user_id="+ user_id +";";
+
+            con.Open();
+            LoadGrid(qry);
+            con.Close();
+            
+        }
+
+        private void LoadGrid(string qry)
+        {
+            da = new OleDbDataAdapter(qry, con);
+            da.Fill(ds1);
+            SchedulesDataGridView1.DataSource = ds1.Tables[0];
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            SchedulesDataGridView1.Columns.Add(btn);
+            btn.Text = "Pojdi na urnik";
+        }
+
+        private void SchedulesDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+        e.RowIndex >= 0)
+            {
+                //TODO - Button Clicked - Execute Code Here
+            }
+        }
     }
 }
