@@ -54,6 +54,7 @@
             this.CreateScheduleButton.TabIndex = 1;
             this.CreateScheduleButton.Text = "Ustvari urnik";
             this.CreateScheduleButton.UseVisualStyleBackColor = true;
+            this.CreateScheduleButton.Click += new System.EventHandler(this.CreateScheduleButton_Click);
             // 
             // Schedules
             // 

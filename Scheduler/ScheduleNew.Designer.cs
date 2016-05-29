@@ -33,6 +33,9 @@
             this.InsertSchedule = new System.Windows.Forms.Button();
             this.InsertLessonComboBox = new System.Windows.Forms.GroupBox();
             this.DayComboBox = new System.Windows.Forms.ComboBox();
+            this.HourComboBox = new System.Windows.Forms.ComboBox();
+            this.SubjectComboBox = new System.Windows.Forms.ComboBox();
+            this.LessonAddButton = new System.Windows.Forms.Button();
             this.InsertScheduleComboBox.SuspendLayout();
             this.InsertLessonComboBox.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +70,9 @@
             // 
             // InsertLessonComboBox
             // 
+            this.InsertLessonComboBox.Controls.Add(this.LessonAddButton);
+            this.InsertLessonComboBox.Controls.Add(this.SubjectComboBox);
+            this.InsertLessonComboBox.Controls.Add(this.HourComboBox);
             this.InsertLessonComboBox.Controls.Add(this.DayComboBox);
             this.InsertLessonComboBox.Location = new System.Drawing.Point(13, 75);
             this.InsertLessonComboBox.Name = "InsertLessonComboBox";
@@ -84,6 +90,33 @@
             this.DayComboBox.Size = new System.Drawing.Size(121, 21);
             this.DayComboBox.TabIndex = 0;
             this.DayComboBox.Text = "Izberi dan";
+            // 
+            // HourComboBox
+            // 
+            this.HourComboBox.FormattingEnabled = true;
+            this.HourComboBox.Location = new System.Drawing.Point(134, 20);
+            this.HourComboBox.Name = "HourComboBox";
+            this.HourComboBox.Size = new System.Drawing.Size(121, 21);
+            this.HourComboBox.TabIndex = 1;
+            this.HourComboBox.Text = "Izberi uro";
+            // 
+            // SubjectComboBox
+            // 
+            this.SubjectComboBox.FormattingEnabled = true;
+            this.SubjectComboBox.Location = new System.Drawing.Point(262, 20);
+            this.SubjectComboBox.Name = "SubjectComboBox";
+            this.SubjectComboBox.Size = new System.Drawing.Size(121, 21);
+            this.SubjectComboBox.TabIndex = 2;
+            this.SubjectComboBox.Text = "Izberi predmet";
+            // 
+            // LessonAddButton
+            // 
+            this.LessonAddButton.Location = new System.Drawing.Point(389, 18);
+            this.LessonAddButton.Name = "LessonAddButton";
+            this.LessonAddButton.Size = new System.Drawing.Size(75, 23);
+            this.LessonAddButton.TabIndex = 3;
+            this.LessonAddButton.Text = "Dodaj uro";
+            this.LessonAddButton.UseVisualStyleBackColor = true;
             // 
             // ScheduleNew
             // 
@@ -108,5 +141,8 @@
         private System.Windows.Forms.Button InsertSchedule;
         private System.Windows.Forms.GroupBox InsertLessonComboBox;
         private System.Windows.Forms.ComboBox DayComboBox;
+        private System.Windows.Forms.Button LessonAddButton;
+        private System.Windows.Forms.ComboBox SubjectComboBox;
+        private System.Windows.Forms.ComboBox HourComboBox;
     }
 }

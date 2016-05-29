@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
+using Scheduler.Forms;
 
 namespace Scheduler
 {
@@ -58,6 +59,14 @@ namespace Scheduler
             {
                 //TODO - Button Clicked - Execute Code Here
             }
+        }
+
+        private void CreateScheduleButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ScheduleNew ScNw = new ScheduleNew();
+            ScNw.ShowDialog();
+            this.Close();
         }
     }
 }
