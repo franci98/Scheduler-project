@@ -32,10 +32,10 @@
             this.InsertScheduleComboBox = new System.Windows.Forms.GroupBox();
             this.InsertSchedule = new System.Windows.Forms.Button();
             this.InsertLessonComboBox = new System.Windows.Forms.GroupBox();
-            this.DayComboBox = new System.Windows.Forms.ComboBox();
-            this.HourComboBox = new System.Windows.Forms.ComboBox();
-            this.SubjectComboBox = new System.Windows.Forms.ComboBox();
             this.LessonAddButton = new System.Windows.Forms.Button();
+            this.SubjectComboBox = new System.Windows.Forms.ComboBox();
+            this.HourComboBox = new System.Windows.Forms.ComboBox();
+            this.DayComboBox = new System.Windows.Forms.ComboBox();
             this.InsertScheduleComboBox.SuspendLayout();
             this.InsertLessonComboBox.SuspendLayout();
             this.SuspendLayout();
@@ -80,25 +80,17 @@
             this.InsertLessonComboBox.TabIndex = 2;
             this.InsertLessonComboBox.TabStop = false;
             this.InsertLessonComboBox.Text = "Dodaj šolsko uro";
-            this.InsertLessonComboBox.Visible = false;
+            this.InsertLessonComboBox.VisibleChanged += new System.EventHandler(this.InsertLessonComboBox_VisibleChanged);
             // 
-            // DayComboBox
+            // LessonAddButton
             // 
-            this.DayComboBox.FormattingEnabled = true;
-            this.DayComboBox.Location = new System.Drawing.Point(7, 20);
-            this.DayComboBox.Name = "DayComboBox";
-            this.DayComboBox.Size = new System.Drawing.Size(121, 21);
-            this.DayComboBox.TabIndex = 0;
-            this.DayComboBox.Text = "Izberi dan";
-            // 
-            // HourComboBox
-            // 
-            this.HourComboBox.FormattingEnabled = true;
-            this.HourComboBox.Location = new System.Drawing.Point(134, 20);
-            this.HourComboBox.Name = "HourComboBox";
-            this.HourComboBox.Size = new System.Drawing.Size(121, 21);
-            this.HourComboBox.TabIndex = 1;
-            this.HourComboBox.Text = "Izberi uro";
+            this.LessonAddButton.Location = new System.Drawing.Point(389, 18);
+            this.LessonAddButton.Name = "LessonAddButton";
+            this.LessonAddButton.Size = new System.Drawing.Size(75, 23);
+            this.LessonAddButton.TabIndex = 3;
+            this.LessonAddButton.Text = "Dodaj uro";
+            this.LessonAddButton.UseVisualStyleBackColor = true;
+            this.LessonAddButton.Click += new System.EventHandler(this.LessonAddButton_Click);
             // 
             // SubjectComboBox
             // 
@@ -109,14 +101,23 @@
             this.SubjectComboBox.TabIndex = 2;
             this.SubjectComboBox.Text = "Izberi predmet";
             // 
-            // LessonAddButton
+            // HourComboBox
             // 
-            this.LessonAddButton.Location = new System.Drawing.Point(389, 18);
-            this.LessonAddButton.Name = "LessonAddButton";
-            this.LessonAddButton.Size = new System.Drawing.Size(75, 23);
-            this.LessonAddButton.TabIndex = 3;
-            this.LessonAddButton.Text = "Dodaj uro";
-            this.LessonAddButton.UseVisualStyleBackColor = true;
+            this.HourComboBox.FormattingEnabled = true;
+            this.HourComboBox.Location = new System.Drawing.Point(134, 20);
+            this.HourComboBox.Name = "HourComboBox";
+            this.HourComboBox.Size = new System.Drawing.Size(121, 21);
+            this.HourComboBox.TabIndex = 1;
+            this.HourComboBox.Text = "Izberi uro";
+            // 
+            // DayComboBox
+            // 
+            this.DayComboBox.FormattingEnabled = true;
+            this.DayComboBox.Location = new System.Drawing.Point(7, 20);
+            this.DayComboBox.Name = "DayComboBox";
+            this.DayComboBox.Size = new System.Drawing.Size(121, 21);
+            this.DayComboBox.TabIndex = 0;
+            this.DayComboBox.Text = "Izberi dan";
             // 
             // ScheduleNew
             // 

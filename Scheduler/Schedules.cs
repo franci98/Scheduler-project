@@ -30,8 +30,7 @@ namespace Scheduler
         private void Schedules_Load(object sender, EventArgs e)
         {
             string user_id = Program.GetUserID();
-
-            Console.WriteLine("User is: " + user_id);
+            
             string qry = "SELECT * FROM schedules WHERE user_id="+ user_id +";";
 
             con.Open();
