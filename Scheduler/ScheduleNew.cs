@@ -36,14 +36,16 @@ namespace Scheduler.Forms
 
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "INSERT INTO schedules (title, user_id) VALUES(@title, @user_id); ";
+            cmd.CommandText = "INSERT INTO schedules (title, user_id) VALUES(@title, @user_id);";
             cmd.Parameters.AddWithValue("@title", schedule_title);
             cmd.Parameters.AddWithValue("@user_id", user_id_num);
             cmd.Connection = con;
 
             con.Open();
             cmd.ExecuteNonQuery();
-            con.Close();
+
+            writeSchedule();
+
             
             InsertScheduleComboBox.Visible = false;
             InsertLessonComboBox.Visible = true;
@@ -102,8 +104,8 @@ namespace Scheduler.Forms
         {
             int selectedIndex = DayComboBox.SelectedIndex;
             int day_id = (int)DayComboBox.SelectedValue;
-            MessageBox.Show("Izbrali ste dan: " + Convert.ToString(day_id));
-            /*
+            //MessageBox.Show("Izbrali ste dan: " + Convert.ToString(day_id));
+            
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "INSERT INTO lessons " +
@@ -116,7 +118,22 @@ namespace Scheduler.Forms
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
-            */
+        }
+
+        private void writeSchedule()
+        {
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT @@IDENTITY";
+            cmd.Connection = con;
+            
+            int ID = (int)cmd.ExecuteScalar();
+            con.Close();
+            FileStream fs = new FileStream("current_schedule.txt", FileMode.Open);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write(Convert.ToString(ID));
+            sw.Flush();
+            sw.Close();
         }
     }
 }
