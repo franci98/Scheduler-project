@@ -38,6 +38,14 @@ namespace Scheduler
             }
         }
 
+        public static string GetConStr()
+        {
+            string connection_string = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = E:/3.TRA/Franc Klavž/PRO/Scheduler/Scheduler/schedulerDB.accdb";
+            return connection_string;
+        }
+
+        
+
 
     }
 }

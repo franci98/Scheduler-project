@@ -14,7 +14,7 @@ namespace Scheduler.Forms
 {
     public partial class ScheduleNew : Form
     {
-        OleDbConnection con = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = C:/Users/Franci/Documents/GitHub/Scheduler/Scheduler/schedulerDB.accdb");
+        OleDbConnection con = new OleDbConnection(Program.GetConStr());
         //Ustvarjanje dataseta / making of a data set
         DataTable dt1 = new DataTable();
         DataTable dt2 = new DataTable();
@@ -102,22 +102,33 @@ namespace Scheduler.Forms
 
         private void LessonAddButton_Click(object sender, EventArgs e)
         {
-            int selectedIndex = DayComboBox.SelectedIndex;
-            int day_id = (int)DayComboBox.SelectedValue;
-            //MessageBox.Show("Izbrali ste dan: " + Convert.ToString(day_id));
+
+            int schedule_id = Convert.ToInt32(GetCurrSch());
+            int subject_id = Int32.Parse(SubjectComboBox.SelectedValue.ToString());
+            int day_id = Int32.Parse(DayComboBox.SelectedValue.ToString());
+            int hour_id = Int32.Parse(HourComboBox.SelectedValue.ToString()); 
+
+            int rating = Convert.ToInt32(RatingComboBox.SelectedItem);
+            string comment = CommentRichTextBox.Text;
+            
             
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "INSERT INTO lessons " +
                                 "(schedule_id, subject_id, comment, rating, day_id, hour_id)"+
                                 "VALUES(@schedule_id, @subject_id, @comment, @rating, @day_id, @hour_id)";
-            //cmd.Parameters.AddWithValue();
-            //cmd.Parameters.AddWithValue();
+            cmd.Parameters.AddWithValue("@schedule_id", schedule_id);
+            cmd.Parameters.AddWithValue("@subject_id", subject_id);
+            cmd.Parameters.AddWithValue("@day_id", day_id);
+            cmd.Parameters.AddWithValue("@hour_id", hour_id);
+            cmd.Parameters.AddWithValue("@comment", comment);
+            cmd.Parameters.AddWithValue("@rating", rating);
             cmd.Connection = con;
 
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
+            
         }
 
         private void writeSchedule()
@@ -134,6 +145,28 @@ namespace Scheduler.Forms
             sw.Write(Convert.ToString(ID));
             sw.Flush();
             sw.Close();
+        }
+
+        private string GetCurrSch(){
+            try
+            {
+                FileStream fs = new FileStream("current_schedule.txt", FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                string user_id = sr.ReadLine();
+                sr.Close();
+
+                return user_id;
+            }
+            catch (Exception)
+            {
+                return "err";
+            }
+        }
+
+
+        private void ScheduleNew_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

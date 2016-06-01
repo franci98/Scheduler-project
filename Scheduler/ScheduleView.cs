@@ -21,7 +21,7 @@ namespace Scheduler
             //string query = "";
         }
 
-        OleDbConnection con = new System.Data.OleDb.OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = schedulerDB.accdb");
+        OleDbConnection con = new System.Data.OleDb.OleDbConnection(Program.GetConStr());
         //Ustvarjanje dataseta / making of a data set
         DataSet ds1 = new DataSet();
         //Adapter / Posrednik med datasetom in povezavo

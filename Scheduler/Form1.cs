@@ -24,11 +24,11 @@ namespace Scheduler
         }
 
         //Ustvarjanje povezave / Making a connection
-        System.Data.OleDb.OleDbConnection con = new System.Data.OleDb.OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = schedulerDB.accdb");
+        OleDbConnection con = new OleDbConnection(Program.GetConStr());
         //Ustvarjanje dataseta / making of a data set
         DataTable ds1 = new DataTable();
         //Adapter / Posrednik med datasetom in povezavo
-        System.Data.OleDb.OleDbDataAdapter da;
+        OleDbDataAdapter da;
 
         private void Login_Load(object sender, EventArgs e)
         {
@@ -43,7 +43,7 @@ namespace Scheduler
             string password = PassTextBox.Text;
 
             string sql = "SELECT * FROM users u Where u.username ='"+ username +"' AND u.password='"+ password +"'";
-            da = new System.Data.OleDb.OleDbDataAdapter(sql, con);
+            da = new OleDbDataAdapter(sql, con);
             da.Fill(ds1);
             con.Close();
             

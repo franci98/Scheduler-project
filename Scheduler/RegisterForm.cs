@@ -19,7 +19,7 @@ namespace Scheduler
         }
 
         //Ustvarjanje povezave / Making a connection
-        System.Data.OleDb.OleDbConnection con = new System.Data.OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/Franci/Documents/GitHub/Scheduler/Scheduler/schedulerDB.accdb");
+        System.Data.OleDb.OleDbConnection con = new System.Data.OleDb.OleDbConnection(Program.GetConStr());
         //Ustvarjanje dataseta / making of a data set
         DataTable ds1 = new DataTable();
         //Adapter / Posrednik med datasetom in povezavo
