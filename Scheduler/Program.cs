@@ -40,11 +40,26 @@ namespace Scheduler
 
         public static string GetConStr()
         {
-            string connection_string = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = E:/3.TRA/Franc Klavž/PRO/Scheduler/Scheduler/schedulerDB.accdb";
+            string connection_string = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = C:/Users/Franci/Documents/GitHub/Scheduler/Scheduler/bin/Debug/schedulerDB.accdb";
             return connection_string;
         }
 
-        
+        public static string GetCurrSch()
+        {
+            try
+            {
+                FileStream fs = new FileStream("current_schedule.txt", FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                string user_id = sr.ReadLine();
+                sr.Close();
+
+                return user_id;
+            }
+            catch (Exception)
+            {
+                return "err";
+            }
+        }
 
 
     }

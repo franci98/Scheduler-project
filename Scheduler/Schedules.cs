@@ -42,11 +42,12 @@ namespace Scheduler
         private void LoadGrid(string qry)
         {
             da = new OleDbDataAdapter(qry, con);
+            ds1.Clear();
             da.Fill(ds1);
             SchedulesDataGridView1.DataSource = ds1.Tables[0];
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             SchedulesDataGridView1.Columns.Add(btn);
-            btn.Text = "Pojdi na urnik";
+            btn.Text = "Pojdi";
         }
 
         private void SchedulesDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -56,8 +57,18 @@ namespace Scheduler
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
         e.RowIndex >= 0)
             {
-                //TODO - Button Clicked - Execute Code Here
+                string sel_id = SchedulesDataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                writeSchedule(sel_id);
             }
+        }
+
+        private void writeSchedule(string sc_id)
+        {
+            FileStream fs = new FileStream("current_schedule.txt", FileMode.Open);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write(sc_id);
+            sw.Flush();
+            sw.Close();
         }
 
         private void CreateScheduleButton_Click(object sender, EventArgs e)

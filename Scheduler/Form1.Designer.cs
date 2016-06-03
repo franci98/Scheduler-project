@@ -35,20 +35,22 @@
             this.PassLabel = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
             this.RegisterFormButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // WelcomeLabel
             // 
             this.WelcomeLabel.AutoSize = true;
-            this.WelcomeLabel.Location = new System.Drawing.Point(151, 9);
+            this.WelcomeLabel.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WelcomeLabel.Location = new System.Drawing.Point(44, 9);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(63, 13);
+            this.WelcomeLabel.Size = new System.Drawing.Size(428, 37);
             this.WelcomeLabel.TabIndex = 0;
-            this.WelcomeLabel.Text = "Dobrodošli1";
+            this.WelcomeLabel.Text = "Dobrodošli v aplikaciji Moj Urnik.";
             // 
             // UsernameTextBox
             // 
-            this.UsernameTextBox.Location = new System.Drawing.Point(135, 64);
+            this.UsernameTextBox.Location = new System.Drawing.Point(127, 129);
             this.UsernameTextBox.Name = "UsernameTextBox";
             this.UsernameTextBox.Size = new System.Drawing.Size(137, 20);
             this.UsernameTextBox.TabIndex = 1;
@@ -56,7 +58,7 @@
             // UsernameLabel
             // 
             this.UsernameLabel.AutoSize = true;
-            this.UsernameLabel.Location = new System.Drawing.Point(40, 67);
+            this.UsernameLabel.Location = new System.Drawing.Point(32, 132);
             this.UsernameLabel.Name = "UsernameLabel";
             this.UsernameLabel.Size = new System.Drawing.Size(89, 13);
             this.UsernameLabel.TabIndex = 2;
@@ -64,7 +66,7 @@
             // 
             // PassTextBox
             // 
-            this.PassTextBox.Location = new System.Drawing.Point(135, 112);
+            this.PassTextBox.Location = new System.Drawing.Point(127, 177);
             this.PassTextBox.Name = "PassTextBox";
             this.PassTextBox.Size = new System.Drawing.Size(137, 20);
             this.PassTextBox.TabIndex = 3;
@@ -72,7 +74,7 @@
             // PassLabel
             // 
             this.PassLabel.AutoSize = true;
-            this.PassLabel.Location = new System.Drawing.Point(92, 115);
+            this.PassLabel.Location = new System.Drawing.Point(84, 180);
             this.PassLabel.Name = "PassLabel";
             this.PassLabel.Size = new System.Drawing.Size(37, 13);
             this.PassLabel.TabIndex = 4;
@@ -80,7 +82,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(135, 152);
+            this.LoginButton.Location = new System.Drawing.Point(127, 217);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(99, 28);
             this.LoginButton.TabIndex = 5;
@@ -90,7 +92,7 @@
             // 
             // RegisterFormButton
             // 
-            this.RegisterFormButton.Location = new System.Drawing.Point(135, 242);
+            this.RegisterFormButton.Location = new System.Drawing.Point(331, 217);
             this.RegisterFormButton.Name = "RegisterFormButton";
             this.RegisterFormButton.Size = new System.Drawing.Size(124, 28);
             this.RegisterFormButton.TabIndex = 6;
@@ -98,11 +100,22 @@
             this.RegisterFormButton.UseVisualStyleBackColor = true;
             this.RegisterFormButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(149, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(249, 37);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Začnite z uporabo.";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 396);
+            this.ClientSize = new System.Drawing.Size(520, 291);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.RegisterFormButton);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PassLabel);
@@ -127,6 +140,7 @@
         private System.Windows.Forms.Label PassLabel;
         private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.Button RegisterFormButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

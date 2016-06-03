@@ -32,12 +32,13 @@
             this.InsertScheduleComboBox = new System.Windows.Forms.GroupBox();
             this.InsertSchedule = new System.Windows.Forms.Button();
             this.InsertLessonComboBox = new System.Windows.Forms.GroupBox();
+            this.RatingComboBox = new System.Windows.Forms.ComboBox();
+            this.CommentRichTextBox = new System.Windows.Forms.RichTextBox();
             this.LessonAddButton = new System.Windows.Forms.Button();
             this.SubjectComboBox = new System.Windows.Forms.ComboBox();
             this.HourComboBox = new System.Windows.Forms.ComboBox();
             this.DayComboBox = new System.Windows.Forms.ComboBox();
-            this.CommentRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.RatingComboBox = new System.Windows.Forms.ComboBox();
+            this.FinishButton = new System.Windows.Forms.Button();
             this.InsertScheduleComboBox.SuspendLayout();
             this.InsertLessonComboBox.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +88,28 @@
             this.InsertLessonComboBox.Visible = false;
             this.InsertLessonComboBox.VisibleChanged += new System.EventHandler(this.InsertLessonComboBox_VisibleChanged);
             // 
+            // RatingComboBox
+            // 
+            this.RatingComboBox.FormattingEnabled = true;
+            this.RatingComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.RatingComboBox.Location = new System.Drawing.Point(7, 71);
+            this.RatingComboBox.Name = "RatingComboBox";
+            this.RatingComboBox.Size = new System.Drawing.Size(121, 21);
+            this.RatingComboBox.TabIndex = 5;
+            // 
+            // CommentRichTextBox
+            // 
+            this.CommentRichTextBox.Location = new System.Drawing.Point(146, 71);
+            this.CommentRichTextBox.Name = "CommentRichTextBox";
+            this.CommentRichTextBox.Size = new System.Drawing.Size(318, 64);
+            this.CommentRichTextBox.TabIndex = 4;
+            this.CommentRichTextBox.Text = "";
+            // 
             // LessonAddButton
             // 
             this.LessonAddButton.Location = new System.Drawing.Point(389, 18);
@@ -124,33 +147,22 @@
             this.DayComboBox.TabIndex = 0;
             this.DayComboBox.Text = "Izberi dan";
             // 
-            // CommentRichTextBox
+            // FinishButton
             // 
-            this.CommentRichTextBox.Location = new System.Drawing.Point(146, 71);
-            this.CommentRichTextBox.Name = "CommentRichTextBox";
-            this.CommentRichTextBox.Size = new System.Drawing.Size(318, 64);
-            this.CommentRichTextBox.TabIndex = 4;
-            this.CommentRichTextBox.Text = "";
-            // 
-            // RatingComboBox
-            // 
-            this.RatingComboBox.FormattingEnabled = true;
-            this.RatingComboBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.RatingComboBox.Location = new System.Drawing.Point(7, 71);
-            this.RatingComboBox.Name = "RatingComboBox";
-            this.RatingComboBox.Size = new System.Drawing.Size(121, 21);
-            this.RatingComboBox.TabIndex = 5;
+            this.FinishButton.Location = new System.Drawing.Point(469, 261);
+            this.FinishButton.Name = "FinishButton";
+            this.FinishButton.Size = new System.Drawing.Size(75, 23);
+            this.FinishButton.TabIndex = 3;
+            this.FinishButton.Text = "Dokončaj";
+            this.FinishButton.UseVisualStyleBackColor = true;
+            this.FinishButton.Click += new System.EventHandler(this.FinishButton_Click);
             // 
             // ScheduleNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 379);
+            this.ClientSize = new System.Drawing.Size(556, 306);
+            this.Controls.Add(this.FinishButton);
             this.Controls.Add(this.InsertLessonComboBox);
             this.Controls.Add(this.InsertScheduleComboBox);
             this.Name = "ScheduleNew";
@@ -175,5 +187,6 @@
         private System.Windows.Forms.ComboBox HourComboBox;
         private System.Windows.Forms.ComboBox RatingComboBox;
         private System.Windows.Forms.RichTextBox CommentRichTextBox;
+        private System.Windows.Forms.Button FinishButton;
     }
 }

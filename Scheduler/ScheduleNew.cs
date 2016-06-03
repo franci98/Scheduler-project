@@ -103,7 +103,7 @@ namespace Scheduler.Forms
         private void LessonAddButton_Click(object sender, EventArgs e)
         {
 
-            int schedule_id = Convert.ToInt32(GetCurrSch());
+            int schedule_id = Convert.ToInt32(Program.GetCurrSch());
             int subject_id = Int32.Parse(SubjectComboBox.SelectedValue.ToString());
             int day_id = Int32.Parse(DayComboBox.SelectedValue.ToString());
             int hour_id = Int32.Parse(HourComboBox.SelectedValue.ToString()); 
@@ -116,11 +116,7 @@ namespace Scheduler.Forms
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "INSERT INTO lessons " +
                                 "(schedule_id, subject_id, comment, rating, day_id, hour_id)"+
-                                "VALUES(@schedule_id, @subject_id, @comment, @rating, @day_id, @hour_id)";
-            cmd.Parameters.AddWithValue("@schedule_id", schedule_id);
-            cmd.Parameters.AddWithValue("@subject_id", subject_id);
-            cmd.Parameters.AddWithValue("@day_id", day_id);
-            cmd.Parameters.AddWithValue("@hour_id", hour_id);
+                                "VALUES("+ schedule_id + ","+ subject_id + ", @comment, @rating, "+ day_id + ", "+ hour_id + ")";
             cmd.Parameters.AddWithValue("@comment", comment);
             cmd.Parameters.AddWithValue("@rating", rating);
             cmd.Connection = con;
@@ -146,27 +142,19 @@ namespace Scheduler.Forms
             sw.Flush();
             sw.Close();
         }
-
-        private string GetCurrSch(){
-            try
-            {
-                FileStream fs = new FileStream("current_schedule.txt", FileMode.Open);
-                StreamReader sr = new StreamReader(fs);
-                string user_id = sr.ReadLine();
-                sr.Close();
-
-                return user_id;
-            }
-            catch (Exception)
-            {
-                return "err";
-            }
-        }
-
+        
 
         private void ScheduleNew_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void FinishButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Schedules Sch = new Schedules();
+            Sch.ShowDialog();
+            this.Close();
         }
     }
 }

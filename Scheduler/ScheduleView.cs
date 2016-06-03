@@ -29,7 +29,13 @@ namespace Scheduler
 
         private void ScheduleView_Load(object sender, EventArgs e)
         {
-            
+            string sch_id = Program.GetCurrSch();
+
+            string qry = "";
+
+            con.Open();
+            LoadGrid(qry);
+            con.Close();
         }
 
         private void LoadGrid(string qry)
@@ -37,9 +43,6 @@ namespace Scheduler
             da = new OleDbDataAdapter(qry, con);
             da.Fill(ds1);
             ScheduleGridView.DataSource = ds1.Tables[0];
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            ScheduleGridView.Columns.Add(btn);
-            btn.Text = "Pojdi na urnik";
         }
     }
 }

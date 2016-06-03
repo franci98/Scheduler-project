@@ -30,6 +30,7 @@
         {
             this.SchedulesDataGridView1 = new System.Windows.Forms.DataGridView();
             this.CreateScheduleButton = new System.Windows.Forms.Button();
+            this.WelcomeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SchedulesDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,8 @@
             this.SchedulesDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SchedulesDataGridView1.Location = new System.Drawing.Point(32, 47);
             this.SchedulesDataGridView1.Name = "SchedulesDataGridView1";
-            this.SchedulesDataGridView1.Size = new System.Drawing.Size(483, 119);
+            this.SchedulesDataGridView1.ReadOnly = true;
+            this.SchedulesDataGridView1.Size = new System.Drawing.Size(483, 266);
             this.SchedulesDataGridView1.TabIndex = 0;
             this.SchedulesDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SchedulesDataGridView1_CellContentClick);
             // 
@@ -56,11 +58,22 @@
             this.CreateScheduleButton.UseVisualStyleBackColor = true;
             this.CreateScheduleButton.Click += new System.EventHandler(this.CreateScheduleButton_Click);
             // 
+            // WelcomeLabel
+            // 
+            this.WelcomeLabel.AutoSize = true;
+            this.WelcomeLabel.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WelcomeLabel.Location = new System.Drawing.Point(208, 7);
+            this.WelcomeLabel.Name = "WelcomeLabel";
+            this.WelcomeLabel.Size = new System.Drawing.Size(150, 37);
+            this.WelcomeLabel.TabIndex = 2;
+            this.WelcomeLabel.Text = "Vaši urniki";
+            // 
             // Schedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 368);
+            this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.CreateScheduleButton);
             this.Controls.Add(this.SchedulesDataGridView1);
             this.Name = "Schedules";
@@ -68,6 +81,7 @@
             this.Load += new System.EventHandler(this.Schedules_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SchedulesDataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -75,5 +89,6 @@
 
         private System.Windows.Forms.DataGridView SchedulesDataGridView1;
         private System.Windows.Forms.Button CreateScheduleButton;
+        private System.Windows.Forms.Label WelcomeLabel;
     }
 }
