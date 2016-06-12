@@ -32,6 +32,7 @@ namespace Scheduler
 
             con.Open();
             cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
 }
