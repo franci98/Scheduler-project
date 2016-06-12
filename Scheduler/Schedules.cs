@@ -59,6 +59,9 @@ namespace Scheduler
             {
                 string sel_id = SchedulesDataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
                 writeSchedule(sel_id);
+                this.Hide();
+                ScheduleView pogled = new ScheduleView();
+                pogled.ShowDialog();
             }
         }
 
